@@ -1,5 +1,5 @@
 class LecturesController < ApplicationController
-
+  before_action :authenticate_user!, only: :show
   # GET /lectures
   def index
     @lectures = Lecture.all
