@@ -1,0 +1,10 @@
+= form_with(model: @lecture) do |form|
+  - if @lecture.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@lecture.errors.count, "error")} prohibited this lecture from being saved:"
+      ul
+        - @lecture.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.submit
