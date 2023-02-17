@@ -3,8 +3,7 @@ p style="color: green" = notice
 == render @lecture
 
 div
-  => link_to "Edit this lecture", edit_lecture_path(@lecture)
-  '|
-  =< link_to "Back to lectures", lectures_path
-
-  = button_to "Destroy this lecture", @lecture, method: :delete
+  - if @lecture.id < @num_of_lectures
+    = link_to "Next lecture", lecture_path(@lecture.id+1)
+  - else
+    = link_to "Back to lectures", lectures_path
