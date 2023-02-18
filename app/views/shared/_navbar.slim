@@ -1,18 +1,19 @@
-nav class="navbar navbar-expand-lg navbar-light bg-light"
-  div.container-fluid
+nav class="navbar"
+  div
     ul class="navbar-nav"
       li class="nav-item"
         = link_to 'Lectures', lectures_path, :class => 'nav-link'
 
 
-    ul class="navbar-nav"
-      - if user_signed_in?
-        li class="nav-item"
-          |  Logged in as #{current_user.email}
-        li class="nav-item"
-          = button_to "Logout", destroy_user_session_path, :class => 'navbar-link', method: :delete
-      - else
-        li class="nav-item"
-          = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-          |  |
-          = link_to "Login", new_user_session_path, :class => 'navbar-link'
+    div.user-info
+      ul class="navbar-nav"
+        - if user_signed_in?
+          li class="nav-item"
+            |  Logged in as #{current_user.email}
+          li class="nav-item"
+            = button_to "Logout", destroy_user_session_path, :class => 'navbar-link', method: :delete
+        - else
+          li class="nav-item"
+            = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+            |  |
+            = link_to "Login", new_user_session_path, :class => 'navbar-link'
