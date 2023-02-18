@@ -1,9 +1,23 @@
-p style="color: green" = notice
+div
+  - if @lecture.id > 1
+    = link_to "Previous lecture", lecture_path(@lecture.id- 1)
+    | | |
+
+  - if @lecture.id < @num_of_lectures
+
+    =< link_to "Next lecture", lecture_path(@lecture.id+1)
+  - else
+    =< link_to "Back to lectures", lectures_path
 
 == render @lecture
 
 div
+  - if @lecture.id > 1
+    = link_to "Previous lecture", lecture_path(@lecture.id- 1)
+    | | |
+
   - if @lecture.id < @num_of_lectures
-    = link_to "Next lecture", lecture_path(@lecture.id+1)
+
+    =< link_to "Next lecture", lecture_path(@lecture.id+1)
   - else
-    = link_to "Back to lectures", lectures_path
+    =< link_to "Back to lectures", lectures_path
